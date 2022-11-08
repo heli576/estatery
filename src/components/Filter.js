@@ -1,5 +1,5 @@
-import React,{useState} from "react";
-import { Grid, Divider, Paper, FormControl, InputLabel, Select, MenuItem, Input, Button } from '@mui/material';
+import React from "react";
+import { Grid, Divider, Paper, FormControl, InputLabel, Select, MenuItem, Input } from '@mui/material';
 import moment from "moment";
 
 const Filter = ({filters, handleChange}) => {
@@ -36,7 +36,7 @@ const Filter = ({filters, handleChange}) => {
                 <InputLabel id="demo-simple-select-label">When</InputLabel>
                <Input value ={when} type = "date" onChange={(e)=> {
                 let val = e.target.value;
-                if(val=="") val = moment().format('L');
+                if(val==="") val = moment().format('L');
                 handleChange({when:val})}
                }/>
             </FormControl>

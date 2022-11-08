@@ -13,15 +13,13 @@ function App() {
     propertyType: "Single Family"
   });
 
-  const { homeStatus, location, when, price, propertyType } = filters;
-
   const handleChange = (data) => {
     setFilters({...filters, ...data });
   }
-  
+
   return (
     <div className="App">
-      <Navbar page = {homeStatus} handlePage = {handleChange}/>
+      <Navbar page = {filters.homeStatus} handlePage = {handleChange}/>
       <ContainerGrid filters = {filters} handleChange = {handleChange} />
     </div>
   );
