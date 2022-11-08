@@ -16,7 +16,7 @@ const Filter = () => {
     return (
     <Paper>
         <Grid container sx = {{padding: 3}}>
-            <Grid item md>
+            <Grid item  md xs={12}>
             <FormControl variant = "standard" sx = {{width:"80%", textAlign:"left"}} color="secondary">
                 <InputLabel id="demo-simple-select-label">Location</InputLabel>
                 <Select
@@ -34,7 +34,7 @@ const Filter = () => {
             </Grid>
             <Divider orientation="vertical" flexItem />
 
-            <Grid item md>
+            <Grid item md xs={12}>
             <FormControl variant = "standard" sx = {{width:"80%", textAlign:"left"}} color="secondary">
                 <InputLabel id="demo-simple-select-label">When</InputLabel>
                <Input value ={when} type = "date" onChange={(e)=> setFilters({...filters, when: e.target.value})}/>
@@ -42,7 +42,7 @@ const Filter = () => {
             </Grid>
             <Divider orientation="vertical" flexItem />
 
-            <Grid item md>
+            <Grid item md xs={12}>
             <FormControl variant = "standard" sx = {{width:"80%", textAlign:"left"}} color="secondary">
                 <InputLabel id="demo-simple-select-label">Price</InputLabel>
                 <Select
@@ -63,7 +63,7 @@ const Filter = () => {
             </Grid>
             <Divider orientation="vertical" flexItem />
 
-            <Grid item md>
+            <Grid item md xs={12}>
             <FormControl variant = "standard" sx = {{width:"80%", textAlign:"left"}} color="secondary">
                 <InputLabel id="demo-simple-select-label">Property Type</InputLabel>
                 <Select
@@ -80,7 +80,7 @@ const Filter = () => {
             </FormControl>
             </Grid>
             <Divider orientation="vertical" flexItem />
-            <Grid item md>
+            <Grid item md xs={12}>
                 <Button variant="contained" color = "secondary" >Search</Button>
             </Grid>
             </Grid>
