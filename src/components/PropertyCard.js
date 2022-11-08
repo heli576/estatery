@@ -15,9 +15,10 @@ const PropertyCard = ({data}) => {
         image= {photos[0]}
         alt="property image"
       />
+
       <CardContent style={{textAlign: "left"}}>
         <Typography variant="h6" color="secondary" style = {{fontWeight:800, fontSize:20}}>
-         ${price/1000}K
+         ${price}K
         </Typography>
         <Typography variant="h6" color="text.primary" style = {{fontWeight:800, fontSize:16}}>
          {address.streetAddress.slice(0,100)}
@@ -26,6 +27,7 @@ const PropertyCard = ({data}) => {
          {address.city+", "+address.state}
         </Typography>
       </CardContent>
+
       <CardActions disableSpacing>
         <IconButton style={{fontSize:16}}>
           <BedIcon fontSize = "small"/>{" "+bedrooms}
@@ -36,7 +38,6 @@ const PropertyCard = ({data}) => {
         <IconButton style={{fontSize:16}}>
           <CropIcon fontSize = "small"/> {" "+livingArea}
         </IconButton>
-       
       </CardActions>    
     </Card>
       </>

@@ -4,6 +4,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import OtherHousesIcon from '@mui/icons-material/OtherHouses';
 
 const Navbar = ({page, handlePage}) => {
+    
 const [anchorElNav, setAnchorElNav] = useState(null);
 const pages = ['Buy', 'Sell', 'Rent'];
 
@@ -93,7 +94,7 @@ return (
                   <Button
                     key={p}
                     onClick={()=>{
-                        handlePage(p);
+                        handlePage({homeStatus: p});
                         handleCloseNavMenu();
                     }}
                     sx={{ my: 2, display: 'block' }}

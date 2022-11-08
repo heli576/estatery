@@ -1,21 +1,17 @@
 import React,{useState} from "react";
 import { Grid, Divider, Paper, FormControl, InputLabel, Select, MenuItem, Input, Button } from '@mui/material';
+import moment from "moment";
 
-const Filter = () => {
-    const [filters, setFilters] = useState({
-        location: "Los Angeles",
-        when: new Date(),
-        price: "1000K-5000K",
-        propertyType:"Single Family"
-    });
-
+const Filter = ({filters, handleChange}) => {
     const {location, when, price, propertyType} = filters;
 
-    const cities = ["Playa Del Rey", "Sylmar", "Sun Valley", "Los Angeles", "Canoga Park", "North Hollywood", "Sunland", "West Hills"];
-    const houseType = ["Single Family","Multi Family","Townhouse", "Lot","Condo"];
+    const cities = ["Sun Valley", "Los Angeles", "North Hollywood", "West Hills"];
+    const houseType = ["Single Family","Multi Family","Townhouse"];
+
     return (
     <Paper>
         <Grid container sx = {{padding: 3}}>
+            {/* location filter */}
             <Grid item  md xs={12}>
             <FormControl variant = "standard" sx = {{width:"80%", textAlign:"left"}} color="secondary">
                 <InputLabel id="demo-simple-select-label">Location</InputLabel>
@@ -23,7 +19,7 @@ const Filter = () => {
                 value={location}
                 label="Location"
                 onChange={(e)=>{
-                    setFilters({...filters, location: e.target.value})
+                   handleChange({location: e.target.value});
                 }}
                 >
                     {cities&&cities.map((c)=>(
@@ -34,14 +30,20 @@ const Filter = () => {
             </Grid>
             <Divider orientation="vertical" flexItem />
 
+            {/* date filter */}
             <Grid item md xs={12}>
             <FormControl variant = "standard" sx = {{width:"80%", textAlign:"left"}} color="secondary">
                 <InputLabel id="demo-simple-select-label">When</InputLabel>
-               <Input value ={when} type = "date" onChange={(e)=> setFilters({...filters, when: e.target.value})}/>
+               <Input value ={when} type = "date" onChange={(e)=> {
+                let val = e.target.value;
+                if(val=="") val = moment().format('L');
+                handleChange({when:val})}
+               }/>
             </FormControl>
             </Grid>
             <Divider orientation="vertical" flexItem />
-
+            
+            {/* price filter */}
             <Grid item md xs={12}>
             <FormControl variant = "standard" sx = {{width:"80%", textAlign:"left"}} color="secondary">
                 <InputLabel id="demo-simple-select-label">Price</InputLabel>
@@ -49,20 +51,20 @@ const Filter = () => {
                 value={price}
                 label="Location"
                 onChange={(e)=>{
-                    setFilters({...filters, price: e.target.value})
+                    handleChange({price: e.target.value});
                 }}
                 >
-                <MenuItem value="0-1000K">0-1000K</MenuItem>
-                <MenuItem value="1000K-5000K">1000K-5000K</MenuItem>
-                <MenuItem value="5000K-10000K">5000K-10000K</MenuItem>
-                <MenuItem value="10000K-50000K">10000K-50000K</MenuItem>
-                <MenuItem value="Above 50000K">Above 50000K</MenuItem>
+                <MenuItem value="0-500K">0-500K</MenuItem>
+                <MenuItem value="1000-5000K">1000-5000K</MenuItem>
+                <MenuItem value="5000-7000K">5000-7000K</MenuItem>
+                <MenuItem value="Above 7000K">Above 7000K</MenuItem>
       
                     </Select>
             </FormControl>
             </Grid>
             <Divider orientation="vertical" flexItem />
 
+            {/* property type filter */}
             <Grid item md xs={12}>
             <FormControl variant = "standard" sx = {{width:"80%", textAlign:"left"}} color="secondary">
                 <InputLabel id="demo-simple-select-label">Property Type</InputLabel>
@@ -70,7 +72,7 @@ const Filter = () => {
                 value={propertyType}
                 label="Property Type"
                 onChange={(e)=>{
-                    setFilters({...filters, propertyType: e.target.value})
+                    handleChange({propertyType:e.target.value})
                 }}
                 >
                     {houseType&&houseType.map((c)=>(
@@ -78,10 +80,6 @@ const Filter = () => {
                     ))}
                     </Select>
             </FormControl>
-            </Grid>
-            <Divider orientation="vertical" flexItem />
-            <Grid item md xs={12}>
-                <Button variant="contained" color = "secondary" >Search</Button>
             </Grid>
             </Grid>
             </Paper>
